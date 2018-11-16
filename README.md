@@ -57,7 +57,7 @@ data till the year 2016.
 
 ### Statistical Questions
 
--What percentage of crimes were “ASSAULTS”?
+- What percentage of crimes were “ASSAULTS”?
 - Which district had the least crime rate in 2014?
 - Which district had the highest crime rate overall?
 - How many thefts were reported throughout the years(entire
@@ -71,8 +71,8 @@ dataset)?
 - httr
 ### Anticipated Challenges
 
-● Data collected might be outdated and may not reflect accurate results
+- Data collected might be outdated and may not reflect accurate results
 for the users today
-● Visualizing data before performing huge operations to answer our
+- Visualizing data before performing huge operations to answer our
 questions
 
