@@ -6,7 +6,7 @@
 
 - Anhad Dhillon
 
-- Divit Java
+- Divit JaWa
 
 - Kartik Arora
 
