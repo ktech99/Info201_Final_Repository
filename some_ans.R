@@ -1,1 +1,1 @@
-read.table("Seattle_PD_dataset.rar", header = TRUE, quote = "", sep=",")
+data  <- data.table::fread("./data/Seattle_PD_data.bz2", header = FALSE, sep=",")
