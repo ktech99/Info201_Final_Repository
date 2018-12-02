@@ -20,5 +20,11 @@ server <- function(input, output, session) {
             panel.background = element_blank(),
             axis.text.y = element_text( lineheight = 15))+
       labs(title = "Frequency of Crimes reported to Seattle PD")
-  })  
+  }) 
+  
+  output$table <- renderTable({
+    summary(police_data)
+  })
+  
+
 }
