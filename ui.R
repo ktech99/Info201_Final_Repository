@@ -1,4 +1,8 @@
 library(shiny)
+<<<<<<< HEAD
+
+=======
+>>>>>>> 20a895c74b25dbf85953643360ba90ce291d2df2
 
   ui <-  pageWithSidebar(
     
