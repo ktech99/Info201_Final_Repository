@@ -27,14 +27,20 @@ server <- function(input, output, session) {
   })
   
   output$mapFreqencyPlot <- renderPlot({
-    crime_grouped <- group_by(police_data, V13, V14) %>% dplyr::filter(grepl("2015",V8)) %>% summarise(freq = n()) %>% dplyr::filter(freq>=200)
+    crime_grouped <- group_by(police_data, V13, V14) %>% dplyr::filter(grepl("2015",V8)) %>% summarise(freq = n())
     ggplot(crime_grouped) +
       geom_tile(aes(
         x = V14,
         y = V13,
-        fill = freq,
-        size = 3
-      )) + scale_fill_gradient(limits=c(0, 3000), low = "white", high = "red")  + ggtitle("North America 1986 Airtemp")
+        fill = freq
+      )) + scale_fill_gradient(low = "white", high = "red")  + ggtitle("North America 1986 Airtemp")
+  })
+  
+  output$summaryHead <- renderText({
+    paste0("Hello, and welcome to our project CID")
+  })
+  output$summarybody <- renderText({
+    paste0("The aim of our project is analyze data from UWPD, and draw conclusions from this data")
   })
 
 }
