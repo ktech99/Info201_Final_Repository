@@ -36,8 +36,8 @@ server <- function(input, output, session) {
       )) + scale_fill_gradient(low = "white", high = "red")  + ggtitle("North America 1986 Airtemp")
   })
   
-  output$summary <- renderText({
-    paste0("Hello, and welcome to out project CID")
+  output$summaryHead <- renderText({
+    paste0("Hello, and welcome to our project CID")
   })
 
 }
