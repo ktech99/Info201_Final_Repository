@@ -1,5 +1,8 @@
 library(shiny)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 20a895c74b25dbf85953643360ba90ce291d2df2
 
   ui <-  pageWithSidebar(
     
@@ -36,7 +39,7 @@ library(shiny)
     # Main panel for displaying outputs ----
     mainPanel(
       tabsetPanel(type = "tabs",
-                  tabPanel("Summary",  h1(textOutput("summary"), style="color:gray")),
+                  tabPanel("Summary",h1(textOutput("summaryHead"), style="color:gray"), h2(textOutput("summarybody"))),
                   tabPanel("Plot", plotOutput("CrimeFrequencyPlot")),
                   tabPanel("Table", tableOutput("table"))
       )
