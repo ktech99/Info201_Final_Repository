@@ -39,5 +39,8 @@ server <- function(input, output, session) {
   output$summaryHead <- renderText({
     paste0("Hello, and welcome to our project CID")
   })
+  output$summarybody <- renderText({
+    paste0("The aim of our project is analyze data from UWPD, and draw conclusions from this data")
+  })
 
 }
