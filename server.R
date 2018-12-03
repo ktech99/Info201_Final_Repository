@@ -26,5 +26,15 @@ server <- function(input, output, session) {
     summary(police_data)
   })
   
+  output$mapFreqencyPlot <- renderPlot({
+    crime_grouped <- group_by(police_data, V13, V14) %>% dplyr::filter(grepl("2015",V8)) %>% summarise(freq = n()) %>% dplyr::filter(freq>=200)
+    ggplot(crime_grouped) +
+      geom_tile(aes(
+        x = V14,
+        y = V13,
+        fill = freq,
+        size = 3
+      )) + scale_fill_gradient(limits=c(0, 3000), low = "white", high = "red")  + ggtitle("North America 1986 Airtemp")
+  })
 
 }

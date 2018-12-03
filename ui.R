@@ -36,7 +36,7 @@ library(shinythemes)
     # Main panel for displaying outputs ----
     mainPanel(
       tabsetPanel(type = "tabs",
-                  tabPanel("Plot", plotOutput("CrimeFrequencyPlot")),
+                  tabPanel("Plot", plotOutput("CrimeFrequencyPlot"), plotOutput("mapFreqencyPlot")),
                   tabPanel("Summary", verbatimTextOutput("summary")),
                   tabPanel("Table", tableOutput("table"))
       )
