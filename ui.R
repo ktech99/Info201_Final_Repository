@@ -37,6 +37,7 @@ library(shiny)
       tabsetPanel(type = "tabs",
                   tabPanel("Summary",h1(textOutput("summaryHead"), style="color:gray"), h2(textOutput("summarybody"))),
                   tabPanel("Plot", plotOutput("CrimeFrequencyPlot")),
+                  tabPanel("Marijuana legalization", plotOutput("crimes2012"), plotOutput("crimes2013")),
                   tabPanel("Table", tableOutput("table"))
       )
       
