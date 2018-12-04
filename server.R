@@ -1,20 +1,53 @@
 library("dplyr")
 library("ggplot2")
 library("R.utils")
+library("ggmap")
 police_data  <-
   data.table::fread("./data/Seattle_PD_data.bz2",
                     header = FALSE,
                     sep = ",")
+seattle <-
+  c(
+    left = -122.459694,
+    bottom = 47.4815352929,
+    right = -122.224434,
+    top = 47.734135
+  )
 seattle_map <-
   get_stamenmap(seattle, zoom = 13, maptype = "toner-lines")
 
-police_data$date <- format(strptime(police_data$V8, "%d/%m/%Y %I:%M:%S %p"), "%d/%m/%y")
-  
+police_data$date <- substr(police_data$V8, 1, 10)
+police_data$time <- substr(police_data$V8, 12, 22)
 server <- function(input, output, session) {
+  AM_PM <- "AM"
+  time_to_search <- 0
+  reactive({
+    time_to_search <- input$time_of_day
+    if (input$time_of_day >= 12) {
+      AM_PM <- "PM"
+      if (input$time_of_day > 12) {
+        time_to_search <- time_to_search - 12
+      }
+    }
+  })
+  
+  
   output$CrimeFrequencyPlot <- renderPlot({
+    time_to_search <- input$time_of_day
+    if (input$time_of_day >= 12) {
+      AM_PM <- "PM"
+      if (input$time_of_day > 12) {
+        time_to_search <- time_to_search - 12
+      }
+    }
     crime_grouped <-
-      group_by(police_data, V6) %>% dplyr::filter(grepl(input$Slider, V8)) %>% summarise(freq = n()) %>% dplyr::filter(freq >=
-                                                                                                                         200)
+      group_by(police_data, V6) %>% dplyr::filter(
+        grepl(input$Slider, V8) &
+          grepl(input$month, substring(V8, 4, 6)) &
+          grepl(AM_PM, time) &
+          grepl(time_to_search, substring(time, 1, 3))
+      ) %>% summarise(freq = n()) %>% dplyr::filter(freq >=
+                                                      200)
     ggplot(data = crime_grouped, aes(
       x = V6,
       y = freq,
@@ -38,16 +71,22 @@ server <- function(input, output, session) {
   })
   
   output$mapFreqencyPlot <- renderPlot({
+    time_to_search <- input$time_of_day
+    if (input$time_of_day >= 12) {
+      AM_PM <- "PM"
+      if (input$time_of_day > 12) {
+        time_to_search <- time_to_search - 12
+      }
+    }
     crime_grouped <-
-      group_by(police_data, V13, V14) %>% dplyr::filter(grepl(input$Slider, V8)) %>% summarise(freq = n()) %>% arrange(freq)
-    seattle <-
-      c(
-        left = -122.459694,
-        bottom = 47.4815352929,
-        right = -122.224434,
-        top = 47.734135
-      )
-
+      group_by(police_data, V13, V14) %>% dplyr::filter(
+        grepl(input$Slider, V8) &
+          grepl(input$month, substring(V8, 4, 6)) &
+          grepl(AM_PM, time) &
+          grepl(time_to_search, substring(time, 1, 3))
+      ) %>% summarise(freq = n()) %>% arrange(freq)
+    
+    
     
     crime_grouped$V13 <- as.numeric(as.character(crime_grouped$V13))
     crime_grouped$V14 <- as.numeric(as.character(crime_grouped$V14))
