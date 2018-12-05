@@ -3,7 +3,6 @@
 ## Team Members
 - Anhad Dhillon, Saasha Mor (Section BE)
 - Divit Jawa, Kartik Arora (Section BF)
-
 ## Project Description
 
 We’ll be working with the *“​Seattle police department 911 response dataset​”*.
@@ -29,19 +28,19 @@ Portal.” ​ Seattle​ , ![](​data.seattle.gov​)
 - People who shifted to Seattle that need to find safe areas to live
 - Students
 - Homeless people
-- UWPD
+- Seattle PD
+
+## Research Questions
+- How can we help Seattle PD recognize which areas and crimes need more attention?
+- Is the negative perception of Marijuana and its role as a catalyst for crime supported by Statistical data?
 
 ## Questions of Interest
 
 1. Which area of Seattle has the most density of crime?
-2. Which type of crime is prevalent in a particular area in Seattle?
-3. How does crime rate correlate to a particular day of the week?
-4. How does crime correlate to a particular time during the day?
-5. Which type of crime is the most prevalent on the UW campus?
-6. How do calls for assaults at the UW campus compare to those across
-    the rest of Seattle?
-7. What kind of crimes(noise complaints, liquor violations and threats and
-    harassments) are prevalent on the Greek row at UW?
+2. How does crime correlate to a particular time during the day?
+3. What kind of crimes are prevalent across different years?
+4. Did Marijuana legalization affect crime rates in Seattle? If so, how?
+5. Does crime correlate to days of the week?
 
 ## Technical Description
 
@@ -58,12 +57,11 @@ data till the year 2016.
 
 ### Statistical Questions
 
-- What percentage of crimes were “ASSAULTS”?
-- Which district had the least crime rate in 2014?
+- What was the change in crime rates before and after Marijuana legalization?
+- Which crimes became more or less prevalent before and after Marijuana legalization
+- Which district had the least crime rate across time?
 - Which district had the highest crime rate overall?
-- How many thefts were reported throughout the years(entire
-dataset)?
-- How many ‘FALSE ALARMS’ were there in 2016?
+- Do weekdays have more crime rates than weekends?
 
 ### Libraries Used
 - ggplot
@@ -76,3 +74,9 @@ dataset)?
 for the users today
 - Visualizing data before performing huge operations to answer our
 questions
+
+## Reflection and conclusions
+- Crime rates infact, decreased drastically after marijuana legalization [insert stats]
+- Area with most density of crime is --- across all years
+- Weekends do have less crime than weekdays
+- Our data could be more helpful if we had Seattle PD response times so that we could assess their effectiveness
