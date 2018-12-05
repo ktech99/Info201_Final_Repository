@@ -38,5 +38,9 @@ plot_2013 <- ggplot(data = data_2013, aes(
            position = 'dodge',
            width = 400) +
   coord_flip()
+<<<<<<< HEAD
+  
+=======
 
 
+>>>>>>> 4d6c1eb16048d3b073430a5a45851a58a0963061
