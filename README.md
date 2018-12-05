@@ -3,6 +3,7 @@
 ## Team Members
 - Anhad Dhillon, Saasha Mor (Section BE)
 - Divit Jawa, Kartik Arora (Section BF)
+
 ## Project Description
 
 We’ll be working with the *“​Seattle police department 911 response dataset​”*.
