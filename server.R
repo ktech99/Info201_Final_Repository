@@ -2,6 +2,7 @@ library("dplyr")
 library("ggplot2")
 library("R.utils")
 library("ggmap")
+library("plotly")
 police_data  <-
   data.table::fread("./data/Seattle_PD_data.bz2",
                     header = FALSE,
@@ -131,21 +132,27 @@ server <- function(input, output, session) {
                width = 400) + ylim(0, 40000) + guides(fill = FALSE) +
       coord_flip() + xlab("Crime Groups") + ylab("Frequency")
   })
-  output$crime2013vs2012 <- renderPlot({
+  output$crime2013vs2012 <- renderPlotly({
     data_2013 <- group_by(police_data, V6) %>% dplyr::filter(grepl('2013', V8)) %>% summarise(freq = n()) %>% dplyr::filter(freq >= 200) 
     sum_2013_2012 <- data.frame(sum(data_2013$freq))
     sum_2013_2012[1,"year"] <- 2013
     data_2012 <- group_by(police_data, V6) %>% dplyr::filter(grepl('2012', V8)) %>% summarise(freq = n()) %>% dplyr::filter(freq >= 200)
     sum_2013_2012[nrow(sum_2013_2012) + 1,] = sum(data_2012$freq)
     sum_2013_2012[2, "year"] <- 2012
-    rainbowcols <- c("#F26419", "#33658A")
-    pie(
-      sum_2013_2012$sum.data_2013.freq,
-      labels = paste0("(Frequency, Year) (", sum_2013_2012$sum.data_2013.freq, sum_2013_2012$year, ")"),
-      main = "Change in 2013 after legalization of Marijuana in 2012",
-      radius = 0.9,
-      col= rainbowcols
-    )
+    # rainbowcols <- c("#F26419", "#33658A")
+    # pie(
+    #   sum_2013_2012$sum.data_2013.freq,
+    #   labels = paste0("(Frequency, Year) (", sum_2013_2012$sum.data_2013.freq, sum_2013_2012$year, ")"),
+    #   main = "Change in 2013 after legalization of Marijuana in 2012",
+    #   radius = 0.9,
+    #   col= rainbowcols
+    # )
+    
+    plot_ly(sum_2013_2012, labels = sum_2013_2012$year, values = sum_2013_2012$sum.data_2013.freq, type = 'pie')%>%
+      layout(title = 'Crimes Reported in 2013 after legalization of Marijuana in 2012',
+             xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+             yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+
   })
   
   

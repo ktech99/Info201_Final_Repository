@@ -36,7 +36,7 @@ ui <-  pageWithSidebar(
     tabsetPanel(type = "tabs",
                 tabPanel("Summary",h1(textOutput("summaryHead"), style="color:gray"), h4(uiOutput("summarybody1"), h4(uiOutput("summarybody2")))),
                 tabPanel("Plot", plotOutput("CrimeFrequencyPlot"), plotOutput("mapFreqencyPlot")),
-                tabPanel("Marijuana legalization", plotOutput("crimes2012"), plotOutput("crimes2013"), plotOutput("crime2013vs2012"))
+                tabPanel("Marijuana legalization", plotOutput("crimes2012"), plotOutput("crimes2013"), plotlyOutput("crime2013vs2012"))
     )
     
     # plotOutput("ShapePlot"),
