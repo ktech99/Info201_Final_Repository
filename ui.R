@@ -1,5 +1,7 @@
 library(shiny)
 library("shinythemes")
+library(plotly)
+
 ui <- fluidPage(
       theme = shinytheme("superhero"),
       pageWithSidebar(

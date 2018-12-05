@@ -3,10 +3,17 @@ library("ggplot2")
 library("R.utils")
 library("ggmap")
 library("plotly")
-police_data  <-
+library("sparklyr")
+
+sc <- spark_connect(master = "local")
+
+police  <-
   data.table::fread("./data/Seattle_PD_data.bz2",
                     header = FALSE,
                     sep = ",")
+
+police_data <- copy_to(sc, police)
+
 seattle <-
   c(
     left = -122.459694,
@@ -159,7 +166,7 @@ server <- function(input, output, session) {
     HTML(paste("<B>Top 3 staggering facts from our investigation:</B><br><ul><li><h4>In 2012, Washington state voters approved I-502 legalizing the possession of small amounts of marijuana, and directing  the Washington State Liquor Control Board to develop a process for regulating marijuana production, processing, selling, and delivery.
                To corroborate this, our study proved that in 2011 there were <B> 295.6 violent offenses</B> reported per 100,000 Washington residents.In 2015, the rate
                had fallen to <B>284.4 violent offenses</B> per 100,000 people.</h4></li><li><h4>  Not including unreported cases, statistics show sexual assault is a frequent crime. In Washington state alone, 45 percent of women and 22 percent of men report having experienced sexual violence in their lifetime
-               </h4></li><li><h4> The rate of property crime for Washington’s cities decreased from <B>3,698.9 offenses per 100,000</B> city inhabitants in 2014 to <B>3,463.8</B> in 2015. Nationally, the estimated rate of property crimes was 2,487.0 offenses per 100,000 city inhabitants."))
+               </h4></li><li><h4> The rate of property crime for Washington's cities decreased from <B>3,698.9 offenses per 100,000</B> city inhabitants in 2014 to <B>3,463.8</B> in 2015. Nationally, the estimated rate of property crimes was 2,487.0 offenses per 100,000 city inhabitants."))
   })
   
 }
