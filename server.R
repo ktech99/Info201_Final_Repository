@@ -135,10 +135,17 @@ server <- function(input, output, session) {
   
   
   output$summaryHead <- renderText({
-    paste0("Hello, and welcome to our project CID")
+    paste0("Hello, and welcome to our project CID!")
   })
-  output$summarybody <- renderText({
-    paste0("The aim of our project is analyze data from UWPD, and draw conclusions from this data")
+  output$summarybody1 <- renderUI({
+    HTML(paste("Seattle is home to an engaged, innovative public that strives to make the city a better place to live. As part of Seattle's Open Data Initiative, the city wants to extend the ways that the public, organizations, businesses, and others 
+               can benefit from the data it already collects. The aim of our project is to explore new potential uses for their city data and answer questions that make the city of Seattle a safer place to live. We wish to seek this by improving public understanding of City operations and other information concerning their communities.<br>"))
+  })
+  
+  output$summarybody2 <- renderUI({
+    HTML(paste("<B>Top 5 staggering facts from our investigation:</B><br><ul><li><h4>In 2012, Washington state voters approved I-502 legalizing the possession of small amounts of marijuana, and directing  the Washington State Liquor Control Board to develop a process for regulating marijuana production, processing, selling, and delivery.
+               To corroborate this, our study proved that in 2011 there were <B> 295.6 violent offenses</B> reported per 100,000 Washington residents.In 2015, the rate
+               had fallen to <B>284.4 violent offenses</B> per 100,000 people.</h4></li><li><h4>  Not including unreported cases, statistics show sexual assault is a frequent crime. In Washington state alone, 45 percent of women and 22 percent of men report having experienced sexual violence in their lifetime"))
   })
   
 }
