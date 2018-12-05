@@ -1,6 +1,8 @@
 library(shiny)
-
-ui <-  pageWithSidebar(
+library("shinythemes")
+ui <- fluidPage(
+      theme = shinytheme("superhero"),
+      pageWithSidebar(
   
   
   # App title ----
@@ -34,7 +36,7 @@ ui <-  pageWithSidebar(
   # Main panel for displaying outputs ----
   mainPanel(
     tabsetPanel(type = "tabs",
-                tabPanel("Summary",h1(textOutput("summaryHead"), style="color:gray"), h4(uiOutput("summarybody1"), h4(uiOutput("summarybody2")))),
+                tabPanel("Summary",h1(span(textOutput("summaryHead"), style="color:white")), h4(span(uiOutput("summarybody1"), style = "color:white"), h4(span(uiOutput("summarybody2")),style = "color:white"))),
                 tabPanel("Plot", plotOutput("CrimeFrequencyPlot"), plotOutput("mapFreqencyPlot")),
                 tabPanel("Marijuana legalization", plotOutput("crimes2012"), plotOutput("crimes2013"), plotlyOutput("crime2013vs2012"))
     )
@@ -42,4 +44,5 @@ ui <-  pageWithSidebar(
     # plotOutput("ShapePlot"),
     #p(textOutput("shapeCaption"))
   )
+)
 )
