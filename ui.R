@@ -23,10 +23,6 @@ ui <-  pageWithSidebar(
       
     ),
     
-    
-    sliderInput('month','Month', min = 1, max = 12,width = 380,
-                value =1, step = 1),
-    
     # create a slder-input widget for time of day selection
     sliderInput('time_of_day','Time of Day', min = 0, max = 23,width = 380,
                 value = 12, step = 1),

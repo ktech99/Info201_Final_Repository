@@ -63,7 +63,7 @@ server <- function(input, output, session) {
         panel.background = element_blank(),
         axis.text.y = element_text(lineheight = 15)
       ) +
-      labs(title = "Frequency of Crimes reported to Seattle PD")
+      labs(title = "Frequency of Crimes reported to Seattle PD", x = "Crime Groups")
   })
   
   
@@ -112,7 +112,7 @@ server <- function(input, output, session) {
       geom_bar(stat = 'identity',
                position = 'dodge',
                width = 400) + ylim(0, 40000) + guides(fill = FALSE) +
-      coord_flip()
+      coord_flip() + xlab("Crime Groups") + ylab("Frequency")
   })
   
   ## Creates a visualization of the crimes and its frequency for the year 2013
@@ -129,7 +129,7 @@ server <- function(input, output, session) {
       geom_bar(stat = 'identity',
                position = 'dodge',
                width = 400) + ylim(0, 40000) + guides(fill = FALSE) +
-      coord_flip()
+      coord_flip() + xlab("Crime Groups") + ylab("Frequency")
   })
   
   
