@@ -1,5 +1,7 @@
 library(shiny)
 library("shinythemes")
+library("shinycssloaders")
+
 ui <- fluidPage(
       theme = shinytheme("superhero"),
       pageWithSidebar(
@@ -36,9 +38,9 @@ ui <- fluidPage(
   # Main panel for displaying outputs ----
   mainPanel(
     tabsetPanel(type = "tabs",
-                tabPanel("Summary",h1(span(textOutput("summaryHead"), style="color:gray")), h4(span(uiOutput("summarybody1"), style = "color:white"), h4(span(uiOutput("summarybody2")),style = "color:white"))),
-                tabPanel("Plot", plotOutput("CrimeFrequencyPlot"), plotOutput("mapFreqencyPlot")),
-                tabPanel("Marijuana legalization", plotOutput("crimes2012"), plotOutput("crimes2013"), plotlyOutput("crime2013vs2012"))
+                tabPanel("Summary",h1(span(textOutput("summaryHead"), style="color:gray")), h4(span(withSpinner(uiOutput("summarybody1")), style = "color:white"), h4(span(withSpinner(uiOutput("summarybody2"))),style = "color:white"))),
+                tabPanel("Plot", withSpinner(plotOutput("CrimeFrequencyPlot")), withSpinner(plotOutput("mapFreqencyPlot"))),
+                tabPanel("Marijuana legalization", withSpinner(plotOutput("crimes2012")), withSpinner(plotOutput("crimes2013")), withSpinner(plotlyOutput("crime2013vs2012")))
     )
     
     # plotOutput("ShapePlot"),
