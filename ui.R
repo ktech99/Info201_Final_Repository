@@ -4,8 +4,13 @@ library(shiny)
     
     
     # App title ----
-    headerPanel("C.I.D (Crime Investigation Department)"),
-    
+    titlePanel(
+      fluidRow(
+        column(9, "C.I.D (Crime Investigation Department)"), 
+        column(2, img(height = 120, width = 200, src = "C.I.D._(TV_series).png"))
+      )
+    ),
+
     # Sidebar panel for inputs ----
     sidebarPanel(
   
@@ -33,7 +38,7 @@ library(shiny)
     # Main panel for displaying outputs ----
     mainPanel(
       tabsetPanel(type = "tabs",
-                  tabPanel("Summary",h1(textOutput("summaryHead"), style="color:gray"), h2(textOutput("summarybody"))),
+                  tabPanel("Summary",h1(textOutput("summaryHead"), style="color:gray"), h4(textOutput("summarybody"))),
                   tabPanel("Plot", plotOutput("CrimeFrequencyPlot"), plotOutput("mapFreqencyPlot")),
                   tabPanel("Marijuana legalization", plotOutput("crimes2012"), plotOutput("crimes2013")),
                   tabPanel("Table", tableOutput("table"))
