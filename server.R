@@ -18,6 +18,7 @@ seattle_map <-
 
 police_data$date <- substr(police_data$V8, 1, 10)
 police_data$time <- substr(police_data$V8, 12, 22)
+
 server <- function(input, output, session) {
   AM_PM <- "AM"
   time_to_search <- 0
@@ -31,7 +32,7 @@ server <- function(input, output, session) {
     }
   })
   
-  
+  ## Creates a plot to show frequency of reported crimes for the given time period in Seattle
   output$CrimeFrequencyPlot <- renderPlot({
     time_to_search <- input$time_of_day
     if (input$time_of_day >= 12) {
@@ -42,8 +43,7 @@ server <- function(input, output, session) {
     }
     crime_grouped <-
       group_by(police_data, V6) %>% dplyr::filter(
-        grepl(input$Slider, V8) &
-          grepl(input$month, substring(V8, 4, 6)) &
+        input$Slider[1] <= substring(V8, 7, 10) & input$Slider[2] >= substring(V8, 7, 10) &
           grepl(AM_PM, time) &
           grepl(time_to_search, substring(time, 1, 3))
       ) %>% summarise(freq = n()) %>% dplyr::filter(freq >=
@@ -66,10 +66,8 @@ server <- function(input, output, session) {
       labs(title = "Frequency of Crimes reported to Seattle PD")
   })
   
-  output$table <- renderTable({
-    summary(police_data)
-  })
   
+  ## Creates a density plot of crime on the map of Seattle for the given time period
   output$mapFreqencyPlot <- renderPlot({
     time_to_search <- input$time_of_day
     if (input$time_of_day >= 12) {
@@ -80,8 +78,7 @@ server <- function(input, output, session) {
     }
     crime_grouped <-
       group_by(police_data, V13, V14) %>% dplyr::filter(
-        grepl(input$Slider, V8) &
-          grepl(input$month, substring(V8, 4, 6)) &
+        input$Slider[1] <= substring(V8, 7, 10) & input$Slider[2] >= substring(V8, 7, 10) &
           grepl(AM_PM, time) &
           grepl(time_to_search, substring(time, 1, 3))
       ) %>% summarise(freq = n()) %>% arrange(freq)
@@ -101,6 +98,7 @@ server <- function(input, output, session) {
     
   })
   
+  ## Creates a visualization of the crimes and its frequency for the year 2012
   output$crimes2012 <- renderPlot({
     data_2012 <-
       group_by(police_data, V6) %>% dplyr::filter(grepl('2012', V8)) %>% summarise(freq = n()) %>% dplyr::filter(freq >=
@@ -117,6 +115,7 @@ server <- function(input, output, session) {
       coord_flip()
   })
   
+  ## Creates a visualization of the crimes and its frequency for the year 2013
   output$crimes2013 <- renderPlot({
     data_2013 <-
       group_by(police_data, V6) %>% dplyr::filter(grepl('2013', V8)) %>% summarise(freq = n()) %>% dplyr::filter(freq >=

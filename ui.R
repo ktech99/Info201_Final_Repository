@@ -17,7 +17,7 @@ ui <-  pageWithSidebar(
     sliderInput(
       "Slider",
       "Year",
-      value = 2014,
+      value = c(2010, 2017),
       min = 2010,
       max = 2017
       
@@ -40,8 +40,7 @@ ui <-  pageWithSidebar(
     tabsetPanel(type = "tabs",
                 tabPanel("Summary",h1(textOutput("summaryHead"), style="color:gray"), h4(uiOutput("summarybody1"), h4(uiOutput("summarybody2")))),
                 tabPanel("Plot", plotOutput("CrimeFrequencyPlot"), plotOutput("mapFreqencyPlot")),
-                tabPanel("Marijuana legalization", plotOutput("crimes2012"), plotOutput("crimes2013")),
-                tabPanel("Table", tableOutput("table"))
+                tabPanel("Marijuana legalization", plotOutput("crimes2012"), plotOutput("crimes2013"))
     )
     
     # plotOutput("ShapePlot"),
