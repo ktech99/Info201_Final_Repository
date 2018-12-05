@@ -37,7 +37,7 @@ server <- function(input, output, session) {
   })
   
   output$summaryHead <- renderText({
-    paste0("Hello, and welcome to our project CID")
+    paste0("Hello, and welcome to our project CID!")
   })
   output$summarybody <- renderText({
     paste("Seattle is home to an engaged, innovative public that strives to make the city a better place to live. As part of Seattle's Open Data Initiative, the city wants to extend the ways that the public, organizations, businesses, and others 
