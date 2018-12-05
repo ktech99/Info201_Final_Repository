@@ -23,3 +23,4 @@ plot_2013 <- ggplot(data = data_2013, aes(
 )) +
   geom_bar(stat = 'identity', position = 'dodge', width = 400) +
   coord_flip()
+  
