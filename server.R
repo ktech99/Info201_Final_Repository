@@ -3,10 +3,12 @@ library("ggplot2")
 library("R.utils")
 library("ggmap")
 library("plotly")
-police_data  <-
+full_data  <-
   data.table::fread("./data/Seattle_PD_data.bz2",
                     header = FALSE,
                     sep = ",")
+police_data <- sample_n(full_data, 50000)
+rm(full_data)
 seattle <-
   c(
     left = -122.459694,
