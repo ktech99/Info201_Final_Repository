@@ -17,9 +17,7 @@ library("leaflet")
       navbarPage( 
         tabPanel("Nothing"),
         tabPanel("Summary",
-                           mainPanel(
-                             h1(span(textOutput("summaryHead"), style="color:gray")), h4(span(withSpinner(uiOutput("summarybody1")), style = "color:white"), h4(span(uiOutput("summarybody2")),style = "color:white"))
-                           )
+                 includeMarkdown("summary.md")
           ),
           tabPanel("Plot",
                    # Sidebar panel for inputs ----
