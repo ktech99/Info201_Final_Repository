@@ -2,8 +2,6 @@ library(shiny)
 library("shinythemes")
 library("shinycssloaders")
 library("plotly")
-library("shinydashboard")
-library("leaflet")
 
  ui <- fluidPage(
    theme = shinytheme("darkly"),
