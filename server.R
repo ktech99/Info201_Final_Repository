@@ -3,11 +3,12 @@ library("ggplot2")
 library("R.utils")
 library("ggmap")
 library("plotly")
-full_data  <-
+police_data  <-
   data.table::fread("./data/Seattle_PD_data.bz2",
                     header = FALSE,
                     sep = ",")
-police_data <- sample_n(full_data, 10000)
+## Here, the dataset has been reduced to randomly use 25000 values to optimize time it takes to run
+police_data <- sample_n(police_data, 25000)
 seattle <-
   c(
     left = -122.459694,
@@ -15,8 +16,9 @@ seattle <-
     right = -122.224434,
     top = 47.734135
   )
+## Here the zoom is set to the low value of 10 in order to occupy less time, it can be increased to improve quality
 seattle_map <-
-  get_stamenmap(seattle, zoom = 13, maptype = "toner-lines")
+  get_stamenmap(seattle, zoom = 10, maptype = "toner-lines")
 
 police_data$date <- substr(police_data$V8, 1, 10)
 police_data$time <- substr(police_data$V8, 12, 22)
