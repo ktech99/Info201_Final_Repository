@@ -25,11 +25,11 @@ improving internal performance management. (“City of Seattle Open Data
 Portal.” ​ Seattle​ , ![](​data.seattle.gov​)
 
 ## Target Audience
-
+- Seattle PD
+It can also be used by: 
 - People who shifted to Seattle that need to find safe areas to live
 - Students
 - Homeless people
-- Seattle PD
 
 ## Research Questions
 - How can we help Seattle PD recognize which areas and crimes need more attention?
@@ -75,6 +75,6 @@ for the users today
 questions
 
 ## Reflection and conclusions
-- Crime rates in fact, decreased drastically after marijuana legalization [insert stats]
-- Area with most density of crime is --- across all years
+- Crime rates in fact, decreased drastically after marijuana legalization as shown in the graphs
+- Area with most density of crime is Downton Seattle across all years
 - Our data could be more helpful if we had Seattle PD response times so that we could assess their effectiveness
