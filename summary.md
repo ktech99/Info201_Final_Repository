@@ -23,6 +23,6 @@ For the purpose of this project we will be using a random collection of 50,000 r
 4. Did Marijuana legalization affect crime rates in Seattle? If so, how?
 
 ## Conclusions
-- Crime rates in fact, decreased drastically after marijuana legalization [insert stats]
+- Crime rates in fact, decreased drastically after marijuana legalization
 - Area with most density of crime is Downtown Seattle across all years
 - Our data could be more helpful if we had Seattle PD response times so that we could assess their effectiveness
