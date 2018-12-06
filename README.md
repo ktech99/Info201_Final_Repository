@@ -9,9 +9,7 @@
 We’ll be working with the *“​Seattle police department 911 response dataset​”*.
 This data set provides a plethora of data to work with which allows us to
 answer many questions and draw constructive conclusions about crime in
-Seattle. Our final goal is to create a shiny app to comprehensively answer
-questions about the safety of people in Seattle
-
+Seattle.
 
 ## Dataset Background
 
@@ -41,7 +39,6 @@ Portal.” ​ Seattle​ , ![](​data.seattle.gov​)
 2. How does crime correlate to a particular time during the day?
 3. What kind of crimes are prevalent across different years?
 4. Did Marijuana legalization affect crime rates in Seattle? If so, how?
-5. Does crime correlate to days of the week?
 
 ## Technical Description
 
@@ -62,7 +59,6 @@ data till the year 2016.
 - Which crimes became more or less prevalent before and after Marijuana legalization
 - Which district had the least crime rate across time?
 - Which district had the highest crime rate overall?
-- Do weekdays have more crime rates than weekends?
 
 ### Libraries Used
 - ggplot
@@ -79,5 +75,4 @@ questions
 ## Reflection and conclusions
 - Crime rates in fact, decreased drastically after marijuana legalization [insert stats]
 - Area with most density of crime is --- across all years
-- Weekends do have less crime than weekdays
 - Our data could be more helpful if we had Seattle PD response times so that we could assess their effectiveness
