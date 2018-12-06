@@ -8,7 +8,6 @@ full_data  <-
                     header = FALSE,
                     sep = ",")
 police_data <- sample_n(full_data, 10000)
-rm(full_data)
 seattle <-
   c(
     left = -122.459694,
@@ -113,7 +112,7 @@ server <- function(input, output, session) {
     )) +
       geom_bar(stat = 'identity',
                position = 'dodge',
-               width = 400) + ylim(0, 1500) + guides(fill = FALSE) +
+               width = 400) + ylim(0, 500) + guides(fill = FALSE) +
       coord_flip() + labs(title = "Crime rates in 2012", x = "Crime Groups" ,y = "Frequency")
   })
   
@@ -129,7 +128,7 @@ server <- function(input, output, session) {
     )) +
       geom_bar(stat = 'identity',
                position = 'dodge',
-               width = 400) + ylim(0, 1500) + guides(fill = FALSE) +
+               width = 400) + ylim(0, 500) + guides(fill = FALSE) +
       coord_flip() + labs(title = "Crime rates in 2013", x = "Crime Groups", y = "Frequency")
   })
   
