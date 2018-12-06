@@ -2,6 +2,7 @@ library(shiny)
 library("shinythemes")
 library("shinycssloaders")
 library("plotly")
+library(markdown)
 
  ui <- fluidPage(
    theme = shinytheme("darkly"),

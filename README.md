@@ -11,7 +11,7 @@ This data set provides a plethora of data to work with which allows us to
 answer many questions and draw constructive conclusions about crime in
 Seattle.
 
-# ![Here](https://saashamor.shinyapps.io/Info201_Final_Repository/) is our shiny app
+# [Here](https://saashamor.shinyapps.io/Info201_Final_Repository/) is our shiny app
 
 ## Dataset Background
 
