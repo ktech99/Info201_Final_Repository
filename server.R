@@ -3,12 +3,13 @@ library("ggplot2")
 library("R.utils")
 library("ggmap")
 library("plotly")
-full_data  <-
+police_data  <-
   data.table::fread("./data/Seattle_PD_data.bz2",
                     header = FALSE,
                     sep = ",")
-police_data <- sample_n(full_data, 50000)
-rm(full_data)
+## For the purpose of this project we have decreased the size of the dataset to prioritize fast processing
+police_data <- sample_n(full_data, 10000)
+
 seattle <-
   c(
     left = -122.459694,
@@ -49,7 +50,7 @@ server <- function(input, output, session) {
         input$Slider[1] <= substring(V8, 7, 10) & input$Slider[2] >= substring(V8, 7, 10) &
           grepl(AM_PM, time) &
           grepl(time_to_search, substring(time, 1, 3))
-      ) %>% summarise(freq = n()) 
+      ) %>% summarise(freq = n())
     
     ggplot(data = crime_grouped, aes(
       x = V6,
@@ -120,7 +121,7 @@ server <- function(input, output, session) {
   ## Creates a visualization of the crimes and its frequency for the year 2013
   output$crimes2013 <- renderPlot({
     data_2013 <-
-      group_by(police_data, V6) %>% dplyr::filter(grepl('2013', V8)) %>% summarise(freq = n()) 
+      group_by(police_data, V6) %>% dplyr::filter(grepl('2013', V8)) %>% summarise(freq = n())
     ggplot(data = data_2013, aes(
       x = V6,
       y = freq,
@@ -147,11 +148,5 @@ server <- function(input, output, session) {
              yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 
   })
-  
-  output$weekdaysPlot <- renderPlotly({
-    renderTreeMap(
-    )
-  })
-  
   
 }
