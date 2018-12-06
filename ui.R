@@ -1,6 +1,7 @@
 library(shiny)
 library("shinythemes")
 library("shinycssloaders")
+library("plotly")
 
 ui <- fluidPage(
       theme = shinytheme("superhero"),
@@ -11,7 +12,7 @@ ui <- fluidPage(
   titlePanel(
     fluidRow(
       column(9,"C.I.D (Crime Investigation Department)"), 
-      column(2, img(height = 120, width = 200, src = "C.I.D._(TV_series).png"))
+      column(2, img(height = 200, width = 200, src = "C.I.D._(TV_series).png"))
     )
   ),
   
