@@ -107,7 +107,7 @@ server <- function(input, output, session) {
     data_2012 <-
       group_by(police_data, V6) %>% dplyr::filter(grepl('2012', V8)) %>% summarise(freq = n())
     ggplot(data = data_2012, aes(
-      x = V6,
+      x = reorder(V6, -freq),
       y = freq,
       width = .5,
       fill = V6
@@ -123,7 +123,7 @@ server <- function(input, output, session) {
     data_2013 <-
       group_by(police_data, V6) %>% dplyr::filter(grepl('2013', V8)) %>% summarise(freq = n())
     ggplot(data = data_2013, aes(
-      x = V6,
+      x = reorder(V6, -freq),
       y = freq,
       width = .5,
       fill = V6
